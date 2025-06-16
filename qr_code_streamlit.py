@@ -29,7 +29,7 @@ with tab1:
             pos = ((img.size[0] - box_size) // 2, (img.size[1] - box_size) // 2)
             img.paste(logo, pos, mask=logo if logo.mode == 'RGBA' else None)
 
-        st.image(img, caption="Your QR Code", use_column_width=False)
+        st.image(img, caption="Your QR Code", use_container_width=False)
 
         buf = io.BytesIO()
         img.save(buf, format="PNG")
