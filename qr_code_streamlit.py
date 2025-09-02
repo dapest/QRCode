@@ -25,7 +25,7 @@ with tab1:
         if logo_file is not None:
             logo = Image.open(logo_file)
             box_size = min(img.size) // 4
-            logo = logo.resize((box_size, box_size), Image.ANTIALIAS)
+            logo = logo.resize((box_size, box_size), Image.Resampling.LANCZOS)
             pos = ((img.size[0] - box_size) // 2, (img.size[1] - box_size) // 2)
             img.paste(logo, pos, mask=logo if logo.mode == 'RGBA' else None)
 
@@ -58,7 +58,7 @@ with tab2:
             if batch_logo_file is not None:
                 logo = Image.open(batch_logo_file)
                 box_size = min(img.size) // 4
-                logo = logo.resize((box_size, box_size), Image.ANTIALIAS)
+                logo = logo.resize((box_size, box_size), Image.Resampling.LANCZOS)
                 pos = ((img.size[0] - box_size) // 2, (img.size[1] - box_size) // 2)
                 img.paste(logo, pos, mask=logo if logo.mode == 'RGBA' else None)
 
@@ -72,3 +72,4 @@ with tab2:
                 zip_file.writestr(name, data)
         zip_buf.seek(0)
         st.download_button("📦 Download All as ZIP", data=zip_buf, file_name="qr_codes.zip", mime="application/zip")
+
